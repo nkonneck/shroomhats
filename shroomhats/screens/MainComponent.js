@@ -3,6 +3,8 @@
 import DirectoryScreen from './DirectoryScreen';
 import HatInfoScreen from './HatInfoScreen';
 import HomeScreen from './HomeScreen';
+import AboutScreen from './AboutScreen';
+import ContactScreen from './ContactScreen';
 import Header from '../components/headercomponent';
 // import Footer from '../components/footercomponent';
 import Constants from 'expo-constants';
@@ -54,6 +56,31 @@ const DirectoryNavigator = () => {
     );
 };
 
+const AboutNavigator = () => {
+    const Stack = createStackNavigator();
+    return (
+        <Stack.Navigator screenOptions={screenOptions}>
+            <Stack.Screen
+                name='About'
+                component={AboutScreen}
+            />
+        </Stack.Navigator>
+    );
+};
+
+const ContactNavigator = () => {
+    const Stack = createStackNavigator();
+    return (
+        <Stack.Navigator screenOptions={screenOptions}>
+            <Stack.Screen
+                name='Contact'
+                component={ContactScreen}
+                options={{ title: 'Contact Us '}}
+            />
+        </Stack.Navigator>
+    );
+};
+
 const Main = () => {
     // const [hats, setHats] = useState(HATS);
     // const [selectedHatId, setSelectedHatId] = useState();
@@ -91,6 +118,26 @@ const Main = () => {
                     tabBarLabel: 'Directory',
                     tabBarIcon: ({ color, size }) => (
                         <Ionicons name='ios-list-outline' size={size} color={color}/>
+                    )
+                }}
+            />
+            <Tab.Screen 
+                name='About'
+                component={AboutNavigator}
+                options={{
+                    tabBarLabel: 'About',
+                    tabBarIcon: ({ color, size }) => (
+                        <Ionicons name='information-circle' size={size} color={color}/>
+                    )
+                }}
+            />
+            <Tab.Screen 
+                name='Contact'
+                component={ContactNavigator}
+                options={{
+                    tabBarLabel: 'Contact',
+                    tabBarIcon: ({ color, size }) => (
+                        <Ionicons name='ios-chatbubbles-outline' size={size} color={color}/>
                     )
                 }}
             />
