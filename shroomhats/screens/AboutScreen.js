@@ -3,19 +3,9 @@ import { Text, ScrollView, View, Linking, StyleSheet, TouchableOpacity } from "r
 
 const AboutScreen = () => {
     return( 
-        <View style={{ flex: 1 }}>
-            <ScrollView>
-                <Mission />
-            </ScrollView>
-        <View style={styles.linksContainer}>
-            <TouchableOpacity onPress={() => Linking.openURL('https://shroomhats.com/privacy-policy/')}>
-                <Text style={styles.linkText}>Privacy Policy</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => Linking.openURL('https://shroomhats.com/refunds_returns_exchanges/')}>
-                <Text style={styles.linkText}>Refund and Returns Policy</Text>
-            </TouchableOpacity>
-    </View>
-    </View>
+        <ScrollView>
+            <Mission />
+        </ScrollView>
     );
 };
 

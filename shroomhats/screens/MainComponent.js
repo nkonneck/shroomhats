@@ -1,5 +1,3 @@
-// import { useState } from 'react';
-// import { HATS } from '../shared/hats';
 import DirectoryScreen from './DirectoryScreen';
 import HatInfoScreen from './HatInfoScreen';
 import HomeScreen from './HomeScreen';
@@ -7,12 +5,12 @@ import AboutScreen from './AboutScreen';
 import ContactScreen from './ContactScreen';
 import Header from '../components/headercomponent';
 import PRScreen from '../components/PrivacyandRefundsComponent';
-// import Footer from '../components/footercomponent';
 import Constants from 'expo-constants';
 import { Platform, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const Tab = createBottomTabNavigator();
 
@@ -83,24 +81,23 @@ const ContactNavigator = () => {
 };
 
 const Main = () => {
-    // const [hats, setHats] = useState(HATS);
-    // const [selectedHatId, setSelectedHatId] = useState();
-
-    return (
+    return ( 
         <View
             style={{
                 flex: 1,
                 paddingTop:
                     Platform.OS === 'ios' ? 0 : Constants.statusBarHeight
             }}
-        >
+         >
             <Header />
-            <Tab.Navigator
-                initialRouteName='Home'
-                tabBarOptions={{ 
-                    activeTintColor: '#ffffff',
-                    inactiveTintColor: '#abb8c3',
-                    style: {backgroundColor: '#374c45' }}}
+            
+         <Tab.Navigator
+            initialRouteName='Home'
+            tabBarOptions={{ 
+                activeTintColor: '#ffffff',
+                inactiveTintColor: '#abb8c3',
+                style: {backgroundColor: '#374c45' },
+            }}
             >
             <Tab.Screen
                 name='Home'
@@ -139,13 +136,13 @@ const Main = () => {
                     tabBarLabel: 'Contact',
                     tabBarIcon: ({ color, size }) => (
                         <Ionicons name='ios-chatbubbles-outline' size={size} color={color}/>
-                    )
+                    ),
                 }}
-            />
-            </Tab.Navigator>
+            /> 
+         </Tab.Navigator> 
+         <PRScreen />
         </View>
     );
-    
 };
 
 export default Main;

@@ -2,7 +2,7 @@ import { Text, View, Linking, StyleSheet, TouchableOpacity } from "react-native"
 
 const PRScreen = () => {
     return( 
-        <View style={{ flex: 1 }}>
+        <View>
         <View style={styles.linksContainer}>
             <TouchableOpacity onPress={() => Linking.openURL('https://shroomhats.com/privacy-policy/')}>
                 <Text style={styles.linkText}>Privacy Policy</Text>
@@ -19,14 +19,13 @@ const styles = StyleSheet.create({
       linksContainer: {
         backgroundColor: '#e5e4e2',
         position: 'absolute',
-        bottom: 0,
-        alignSelf: 'center',
+        bottom: 79,
         flexDirection: 'row',
         width: '100%',
         justifyContent: 'center',
       },
       linkText: {
-        marginVertical: 40,
+        marginVertical: 20,
         marginHorizontal: 10,
         color: 'black',
         fontSize: 15,
