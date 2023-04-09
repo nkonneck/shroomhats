@@ -6,6 +6,7 @@ import HomeScreen from './HomeScreen';
 import AboutScreen from './AboutScreen';
 import ContactScreen from './ContactScreen';
 import Header from '../components/headercomponent';
+import PRScreen from '../components/PrivacyandRefundsComponent';
 // import Footer from '../components/footercomponent';
 import Constants from 'expo-constants';
 import { Platform, View } from 'react-native';
@@ -16,8 +17,8 @@ import { Ionicons } from '@expo/vector-icons';
 const Tab = createBottomTabNavigator();
 
 const screenOptions = {
-    headerTintColor: '#abb8c3',
-    headerStyle: { backgroundColor: '#ffffff'}
+    headerTintColor: 'black',
+    headerStyle: { backgroundColor: '#d3d3d3'}
 };
 
 const HomeNavigator = () => {
