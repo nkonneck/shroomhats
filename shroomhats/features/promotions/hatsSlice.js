@@ -1,23 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { HATS } from '../../shared/hats';
 
-export const fetchPromotions = createAsyncThunk(
-    'promotions/fetchPromotions',
+export const fetchHats = createAsyncThunk(
+    'hats/fetchHats',
     async () => {
-        const response = await fetch(baseUrl + 'promotions');
-        if (!response.ok) {
-            return Promise.reject(
-                'Unable to fetch, status: ' + response.status
-            );
-        }
-        const data = await response.json();
-        return data;
+        return HATS;
+        
     }
 );
 
-const promotionsSlice = createSlice({
+const hatsSlice = createSlice({
     name: 'promotions',
-    initialState: { isLoading: true, errMess: null, promotionsArray: [] },
+    initialState: { isLoading: true, errMess: null, hatsArray: [] },
     reducers: {},
     extraReducers: (builder) => {
         builder
@@ -38,4 +32,4 @@ const promotionsSlice = createSlice({
     }
 });
 
-export const promotionsReducer = promotionsSlice.reducer;
+export const promotionsReducer = hatsSlice.reducer;
