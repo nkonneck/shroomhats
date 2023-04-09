@@ -2,23 +2,41 @@
 // import { HATS } from '../shared/hats';
 import DirectoryScreen from './DirectoryScreen';
 import HatInfoScreen from './HatInfoScreen';
+import HomeScreen from './HomeScreen';
 import Header from '../components/headercomponent';
 // import Footer from '../components/footercomponent';
 import Constants from 'expo-constants';
 import { Platform, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
+
+const Tab = createBottomTabNavigator();
+
+const screenOptions = {
+    headerTintColor: '#abb8c3',
+    headerStyle: { backgroundColor: '#ffffff'}
+};
+
+const HomeNavigator = () => {
+    const Stack = createStackNavigator();
+    return (
+        <Stack.Navigator screenOptions={screenOptions}>
+            <Stack.Screen 
+                name='Home'
+                component={HomeScreen}
+                options={{ title: 'Home' }}
+            />
+        </Stack.Navigator>
+    );
+};
 
 const DirectoryNavigator = () => {
     const Stack = createStackNavigator();
     return (
         <Stack.Navigator
             initialRouteName='Directory'
-            screenOptions={{
-                headerStyle: {
-                    backgroundColor: '#ffffff'
-                },
-                headerTintColor: '#abb8c3'
-            }}
+            screenOptions={screenOptions}
         >
             <Stack.Screen
                 name='Directory'
@@ -49,7 +67,34 @@ const Main = () => {
             }}
         >
             <Header />
-            <DirectoryNavigator />
+            <Tab.Navigator
+                initialRouteName='Home'
+                tabBarOptions={{ 
+                    activeTintColor: '#ffffff',
+                    inactiveTintColor: '#abb8c3',
+                    style: {backgroundColor: '#374c45' }}}
+            >
+            <Tab.Screen
+                name='Home'
+                component={HomeNavigator}
+                options={{ 
+                    tabBarLabel: 'Home', 
+                    tabBarIcon: ({ color, size }) => (
+                        <Ionicons name='ios-home-outline' size={size} color={color} />
+                    )
+                }}
+            />
+            <Tab.Screen 
+                name='Directory'
+                component={DirectoryNavigator}
+                options={{ 
+                    tabBarLabel: 'Directory',
+                    tabBarIcon: ({ color, size }) => (
+                        <Ionicons name='ios-list-outline' size={size} color={color}/>
+                    )
+                }}
+            />
+            </Tab.Navigator>
         </View>
     );
     
