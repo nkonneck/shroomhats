@@ -1,7 +1,8 @@
 import RenderHat from '../features/hats/RenderHat';
 
-const HatInfoScreen = (props) => {
-    return <RenderHat hat={props.hat} />
-}
+const HatInfoScreen = ({ route }) => {
+    const { hat } = route.params;
+    return <RenderHat hat={hat} />
+};
 
 export default HatInfoScreen;

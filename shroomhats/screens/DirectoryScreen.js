@@ -1,10 +1,20 @@
 import { FlatList } from 'react-native';
 import { Avatar, ListItem } from 'react-native-elements';
+import { useState } from 'react';
+import { HATS } from '../shared/hats';
 
-const DirectoryScreen = (props) => {
+
+
+const DirectoryScreen = ({ navigation }) => {
+    const [hats, setHats] = useState(HATS);
+
     const renderDirectoryItem = ({ item: hat }) => {
         return (
-            <ListItem onPress={() => props.onPress(hat.id)}>
+            <ListItem 
+                onPress={() => 
+                    navigation.navigate('HatInfo', { hat })
+                }
+            >
                 <Avatar source={hat.image} rounded />
                 <ListItem.Content>
                     <ListItem.Title>{hat.name}</ListItem.Title>
@@ -15,7 +25,7 @@ const DirectoryScreen = (props) => {
     };
     return (
         <FlatList 
-            data={props.hats}
+            data={hats}
             renderItem={renderDirectoryItem}
             keyExtractor={(item) => item.id.toString()}
         />
