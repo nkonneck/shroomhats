@@ -3,13 +3,13 @@ import HatInfoScreen from './HatInfoScreen';
 import HomeScreen from './HomeScreen';
 import AboutScreen from './AboutScreen';
 import ContactScreen from './ContactScreen';
-import Header from '../components/headercomponent';
 import Constants from 'expo-constants';
-import { Platform, View } from 'react-native';
+import { Platform, View, Image, StyleSheet } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 
@@ -17,8 +17,18 @@ const Tab = createBottomTabNavigator();
 
 const screenOptions = {
     headerTintColor: 'black',
-    headerStyle: { backgroundColor: '#d3d3d3'}
+    headerStyle: { backgroundColor: '#fff' },
 };
+
+const LogoTitle = () => {
+    return (
+        <Image 
+            style={{width: 100, height: 50, marginBottom: 10 }} 
+            source={require('../assets/images/logo.png')}
+        />
+    );
+};
+
 
 const HomeNavigator = () => {
     const Stack = createStackNavigator();
@@ -27,7 +37,23 @@ const HomeNavigator = () => {
             <Stack.Screen 
                 name='Discover'
                 component={HomeScreen}
-                options={{ title: 'Discover' }}
+                options={{ 
+                    headerTitle: (props) => <LogoTitle {...props} />,
+                    headerLeft: () => (
+                        <Icon style={styles.searchIcon}
+                            name='search'
+                            size={20}
+                            color={'#333'}
+                        />
+                    ),
+                    headerRight: () => (
+                        <Icon style={styles.cartIcon}
+                            name="shopping-cart" 
+                            size={20} 
+                            color="#333"
+                        />
+                    )
+            }}
             />
         </Stack.Navigator>
     );
@@ -43,7 +69,7 @@ const DirectoryNavigator = () => {
             <Stack.Screen
                 name='Directory'
                 component={DirectoryScreen}
-                options={{ title: 'Hats Directory' }}
+                options={{ headerTitle: (props) => <LogoTitle {...props} />, }}
             />
             <Stack.Screen
                 name='HatInfo'
@@ -63,6 +89,8 @@ const AboutNavigator = () => {
             <Stack.Screen
                 name='About'
                 component={AboutScreen}
+                options={{ headerTitle: (props) => <LogoTitle {...props} />, }}
+
             />
         </Stack.Navigator>
     );
@@ -75,7 +103,7 @@ const ContactNavigator = () => {
             <Stack.Screen
                 name='Contact'
                 component={ContactScreen}
-                options={{ title: 'Contact Us '}}
+                options={{ headerTitle: (props) => <LogoTitle {...props} />, }}
             />
         </Stack.Navigator>
     );
@@ -91,7 +119,7 @@ const Main = () => {
                     Platform.OS === 'ios' ? 0 : Constants.statusBarHeight
             }}
          >
-            <Header />
+           
          <Tab.Navigator
             initialRouteName='Home'
             tabBarOptions={{ 
@@ -144,5 +172,16 @@ const Main = () => {
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+    searchIcon: {
+        marginLeft: 20,
+        alignItems: 'center'
+    },
+    cartIcon: {
+        marginRight: 20,
+        alignItems: 'center'
+    },
+});
 
 export default Main;

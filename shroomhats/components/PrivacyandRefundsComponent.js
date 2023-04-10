@@ -19,10 +19,11 @@ const styles = StyleSheet.create({
       linksContainer: {
         backgroundColor: '#e5e4e2',
         position: 'absolute',
-        marginTop: 30,
+        marginTop: 90,
         flexDirection: 'row',
         width: '100%',
         justifyContent: 'center',
+
       },
       linkText: {
         marginVertical: 20,
