@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
       linksContainer: {
         backgroundColor: '#e5e4e2',
         position: 'absolute',
-        bottom: 79,
+        marginTop: 30,
         flexDirection: 'row',
         width: '100%',
         justifyContent: 'center',

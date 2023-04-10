@@ -1,12 +1,16 @@
 import { Card } from "react-native-elements";
 import { Text, ScrollView, View, Linking, StyleSheet, TouchableOpacity } from "react-native";
 import SocialMedia from "../components/socialMedia";
+import PRScreen from '../components/PrivacyandRefundsComponent'
 
 const AboutScreen = () => {
     return( 
+      <View>
         <ScrollView>
             <AboutUs />
         </ScrollView>
+        <PRScreen />
+        </View>
     );
 };
 
@@ -75,21 +79,6 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: 'bold',
         fontSize: 16,
-      },
-      linksContainer: {
-        backgroundColor: '#e5e4e2',
-        position: 'absolute',
-        bottom: 0,
-        alignSelf: 'center',
-        flexDirection: 'row',
-        width: '100%',
-        justifyContent: 'center',
-      },
-      linkText: {
-        marginVertical: 40,
-        marginHorizontal: 10,
-        color: 'black',
-        fontSize: 15,
       },
   });
 

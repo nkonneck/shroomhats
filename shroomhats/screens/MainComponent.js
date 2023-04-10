@@ -4,7 +4,6 @@ import HomeScreen from './HomeScreen';
 import AboutScreen from './AboutScreen';
 import ContactScreen from './ContactScreen';
 import Header from '../components/headercomponent';
-import PRScreen from '../components/PrivacyandRefundsComponent';
 import Constants from 'expo-constants';
 import { Platform, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -140,7 +139,6 @@ const Main = () => {
                 }}
             /> 
          </Tab.Navigator> 
-         <PRScreen />
         </View>
     );
 };
