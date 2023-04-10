@@ -10,7 +10,8 @@ import { Platform, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import { ScrollView } from 'react-native-gesture-handler';
+
+
 
 const Tab = createBottomTabNavigator();
 
@@ -24,9 +25,9 @@ const HomeNavigator = () => {
     return (
         <Stack.Navigator screenOptions={screenOptions}>
             <Stack.Screen 
-                name='Home'
+                name='Discover'
                 component={HomeScreen}
-                options={{ title: 'Home' }}
+                options={{ title: 'Discover' }}
             />
         </Stack.Navigator>
     );
@@ -90,7 +91,6 @@ const Main = () => {
             }}
          >
             <Header />
-            
          <Tab.Navigator
             initialRouteName='Home'
             tabBarOptions={{ 
@@ -100,10 +100,10 @@ const Main = () => {
             }}
             >
             <Tab.Screen
-                name='Home'
+                name='Discover'
                 component={HomeNavigator}
                 options={{ 
-                    tabBarLabel: 'Home', 
+                    tabBarLabel: 'Discover', 
                     tabBarIcon: ({ color, size }) => (
                         <Ionicons name='ios-home-outline' size={size} color={color} />
                     )

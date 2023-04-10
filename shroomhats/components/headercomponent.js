@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
 
-
 const Header = () => {
     return (
         <View style={styles.header}>

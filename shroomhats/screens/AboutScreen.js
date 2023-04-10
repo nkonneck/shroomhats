@@ -1,10 +1,11 @@
 import { Card } from "react-native-elements";
 import { Text, ScrollView, View, Linking, StyleSheet, TouchableOpacity } from "react-native";
+import SocialMedia from "../components/socialMedia";
 
 const AboutScreen = () => {
     return( 
         <ScrollView>
-            <Mission />
+            <AboutUs />
         </ScrollView>
     );
 };
@@ -17,15 +18,15 @@ const CustomButton = ({ title, onPress }) => {
     );
   };
 
-const Mission = () => {
+const AboutUs = () => {
     const handeDonatePress = () => {
         Linking.openURL('https://thethirdwave.co/donate/');
     };
 
     return (
         <Card>
-            <Card.Title h1>About Us</Card.Title>
-            <Card.Divider style={{ borderWidth: 2, borderColor: 'black' }}/>
+            <Card.Title h2>About Us</Card.Title>
+            <Card.Divider style={styles.card}/>
             <Text
                 style={{ margin: 10 }}
             >
@@ -37,16 +38,30 @@ const Mission = () => {
             <View style={styles.buttonContainer}>
                 <CustomButton title='DONATE' onPress={handeDonatePress} />
             </View>
+            <Card.Divider style={styles.card} />
+            <View>
+                <Text>
+                Connect with us on social media!
+                </Text>
+                <SocialMedia />
+            </View>
         </Card>
     );
 };
 
+ 
+
 const styles = StyleSheet.create({
+    card:{
+        borderWidth: 2, 
+        borderColor: 'black',
+        margin: 10,
+    },
     buttonContainer: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        //width: '100%',
+        paddingBottom: 10,
       },
       button: {
         backgroundColor: '#4c4139',

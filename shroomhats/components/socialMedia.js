@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Linking } from "react-native";
 import { AntDesign, FontAwesome } from '@expo/vector-icons';
  
-const Footer = () => {
+const SocialMedia = () => {
     const handleFacebookPress = () => {
         Linking.openURL('https://www.facebook.com/shroomhats');
     };
@@ -17,42 +17,46 @@ const Footer = () => {
 
     return (
         <View style={styles.footer}>
-            <Text style={styles.text}>© 2023 Shroom Hats. All rights reserved.</Text>
             <View style={styles.icons}>
                 <TouchableOpacity onPress={handleFacebookPress}>
-                    <AntDesign name="facebook-square" size={24} color="white" style={styles.icon} />
+                    <AntDesign name="facebook-square" size={40} color="black" style={styles.icon} />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={handleInstagramPress}>
-                    <AntDesign name="instagram" size={24} color="white" style={styles.icon} />
+                    <AntDesign name="instagram" size={40} color="black" style={styles.icon} />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={handleRedditPress}>
-                    <FontAwesome name="reddit-square" size={24} color="white" style={styles.icon} />
+                    <FontAwesome name="reddit-square" size={40} color="black" style={styles.icon} />
                 </TouchableOpacity>
             </View>
+            <Text style={styles.text}>© 2023 Shroom Hats. All rights reserved.</Text>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
     footer: {
-        height: 60,
-        backgroundColor: '#374c45',
+        height: 80,
+        backgroundColor: 'rgba(231, 244, 228, 0.35)',
         justifyContent: 'center',
         alignItems: 'center',
-        borderBottomWidth: 5,
         borderBottomColor: '#ccc',
-        marginBottom: 10,
+       // marginTop: 5,
+        position: 'relative',
     },
     text: {
         fontSize: 12,
-        color: '#ffffff'
+        fontWeight: 'bold',
+        color: '#212121',
+        position: 'absolute',
+        bottom: 0,
     },
     icons: {
         flexDirection: 'row',
+        paddingBottom: 15,
     },
     icon: {
         marginHorizontal: 8,
     },
 });
 
-export default Footer;
+export default SocialMedia;
