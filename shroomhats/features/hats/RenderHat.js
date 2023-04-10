@@ -23,5 +23,5 @@ const RenderHat = ({ hat }) => {
     }
     return <View />;
 };
-
+ 
 export default RenderHat;
