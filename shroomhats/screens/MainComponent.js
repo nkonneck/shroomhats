@@ -4,6 +4,8 @@ import HomeScreen from './HomeScreen';
 import AboutScreen from './AboutScreen';
 import ContactScreen from './ContactScreen';
 import Constants from 'expo-constants';
+import AHScreen from './AHScreen';
+import FFScreen from './FFScreen';
 import { Platform, View, Image, StyleSheet } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -55,32 +57,75 @@ const HomeNavigator = () => {
                     )
             }}
             />
+            <Stack.Screen 
+                name='AHScreen'
+                component={AHScreen} 
+                options={{
+                    headerTitle: (props) => <LogoTitle {...props} />,
+                    // headerLeft: () => (
+                    //     <Icon style={styles.searchIcon}
+                    //         name='search'
+                    //         size={20}
+                    //         color={'#333'}
+                    //     />
+                    // ),
+                    headerRight: () => (
+                        <Icon style={styles.cartIcon}
+                            name="shopping-cart" 
+                            size={20} 
+                            color="#333"
+                        />
+                    )
+                }}
+            />
+            <Stack.Screen 
+                name='FFScreen'
+                component={FFScreen} 
+                options={{
+                    headerTitle: (props) => <LogoTitle {...props} />,
+                    // headerLeft: () => (
+                    //     <Icon style={styles.searchIcon}
+                    //         name='search'
+                    //         size={20}
+                    //         color={'#333'}
+                    //     />
+                    // ),
+                    headerRight: () => (
+                        <Icon style={styles.cartIcon}
+                            name="shopping-cart" 
+                            size={20} 
+                            color="#333"
+                        />
+                    )
+                }}
+            />
         </Stack.Navigator>
     );
 };
 
-const DirectoryNavigator = () => {
-    const Stack = createStackNavigator();
-    return (
-        <Stack.Navigator
-            initialRouteName='Directory'
-            screenOptions={screenOptions}
-        >
-            <Stack.Screen
-                name='Directory'
-                component={DirectoryScreen}
-                options={{ headerTitle: (props) => <LogoTitle {...props} />, }}
-            />
-            <Stack.Screen
-                name='HatInfo'
-                component={HatInfoScreen}
-                options={({ route }) => ({
-                    title: route.params.hat.name
-                })}
-            />
-        </Stack.Navigator>
-    );
-};
+
+// const DirectoryNavigator = () => {
+//     const Stack = createStackNavigator();
+//     return (
+//         <Stack.Navigator
+//             initialRouteName='Directory'
+//             screenOptions={screenOptions}
+//         >
+//             <Stack.Screen
+//                 name='Directory'
+//                 component={DirectoryScreen}
+//                 options={{ headerTitle: (props) => <LogoTitle {...props} />, }}
+//             />
+//             <Stack.Screen
+//                 name='HatInfo'
+//                 component={HatInfoScreen}
+//                 options={({ route }) => ({
+//                     title: route.params.hat.name
+//                 })}
+//             />
+//         </Stack.Navigator>
+//     );
+// };
 
 const AboutNavigator = () => {
     const Stack = createStackNavigator();
@@ -138,7 +183,7 @@ const Main = () => {
                     )
                 }}
             />
-            <Tab.Screen 
+            {/* <Tab.Screen 
                 name='Directory'
                 component={DirectoryNavigator}
                 options={{ 
@@ -147,7 +192,7 @@ const Main = () => {
                         <Ionicons name='ios-list-outline' size={size} color={color}/>
                     )
                 }}
-            />
+            /> */}
             <Tab.Screen 
                 name='About'
                 component={AboutNavigator}
@@ -158,6 +203,16 @@ const Main = () => {
                     )
                 }}
             />
+            <Tab.Screen 
+                name='Account'
+                component={ContactNavigator}
+                options={{
+                    tabBarLabel: 'Account',
+                    tabBarIcon: ({ color, size }) => (
+                        <Ionicons name='person-circle' size={size} color={color}/>
+                    ),
+                }}
+            /> 
             <Tab.Screen 
                 name='Contact'
                 component={ContactNavigator}

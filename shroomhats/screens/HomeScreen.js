@@ -1,18 +1,23 @@
-import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import { View, Text, StyleSheet, TouchableOpacity, FlatList } from "react-native";
+import { HATS } from "../shared/hats";
+
 
 const HomeScreen = ({ navigation }) => {
+
   return (
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate("Adjustable Hats")}
+        onPress={() =>
+          navigation.navigate('AHScreen')}
       >
         <Text style={styles.buttonText}>Adjustable Hats</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate("Flexfit Hats")}
+        onPress={() =>
+          navigation.navigate('FFScreen')}
       >
         <Text style={styles.buttonText}>Flexfit Hats</Text>
       </TouchableOpacity>
@@ -41,3 +46,45 @@ const styles = StyleSheet.create({
 });
 
 export default HomeScreen;
+
+
+
+
+//const [hats, setHats] = useState(HATS);
+//    const renderDirectoryItem = ({ item: hat }) => {
+//     
+//   return (
+//     <FlatList
+//       data={hats}
+//       renderItem={renderDirectoryItem}
+//       keyExtractor={(item) => item.id.toString()}
+//     />
+//   )
+// };
+
+
+  // const filterHatsByType = (type) => {
+  //   const filtered = HATS.filter((hat) => hat.type === type);
+  //   setFilteredHats(filtered);
+
+  // };
+
+//   return (
+//     <View style={styles.container}>
+//       <TouchableOpacity
+//         style={styles.button}
+//         onPress={() => 
+//           navigation.navigate('AHScreen',)
+//           }
+//       >
+//         <Text style={styles.buttonText}>Adjustable Hats</Text>
+//       </TouchableOpacity>
+//       
+//       <FlatList 
+//         data={filteredHats}
+//         renderItem={({ item }) => <ProductItem item={item} />}
+//         keyExtractor={(item) => item.id.toString()}
+//       /> */}
+//     </View>
+//   );
+// };
