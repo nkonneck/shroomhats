@@ -2,10 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { View, FlatList, Text } from 'react-native';
 import ProductItem from '../components/ProductItem';
 
-const AHScreen = () => {
+const AHScreen = ({ route }) => {
+  const { adjustableHats } = route.params;
+
+const renderItem = ({ item }) => (
+  <ProductItem item={item} />
+);
+
   return (
     <View>
-        <Text>Test</Text>
+        <FlatList
+          data={adjustableHats}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id.toString()}
+        /> 
     </View>
   );
 };
@@ -15,19 +25,7 @@ export default AHScreen;
 
 
 
- //const { filterFunction } = route.params;
-  //const [filteredHats, setFilteredHats] = useState([]);
-
-//   useEffect(() => {
-//     if (filterFunction) {
-//         setFilteredHats(filterFunction());
-//     }
-    
-//   }, [filterFunction]);
+ 
 
   
-      {/* <FlatList
-        data={filteredHats}
-        renderItem={({ item }) => <ProductItem item={item} />}
-        keyExtractor={(item) => item.id.toString()}
-      /> */}
+   
