@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from "react-native";
 import { HATS } from "../shared/hats";
 import beachhat from "../assets/images/beachhat.png"

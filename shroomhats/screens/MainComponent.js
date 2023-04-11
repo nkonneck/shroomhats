@@ -1,5 +1,3 @@
-import DirectoryScreen from './DirectoryScreen';
-import HatInfoScreen from './HatInfoScreen';
 import FavoritesScreen from './FavoritesScreen';
 import HomeScreen from './HomeScreen';
 import AboutScreen from './AboutScreen';
@@ -11,7 +9,6 @@ import { Platform, View, Image, StyleSheet } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 

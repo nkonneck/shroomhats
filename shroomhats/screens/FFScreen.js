@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { View, FlatList, Text } from 'react-native';
+import React from 'react';
+import { View, FlatList } from 'react-native';
 import ProductItem from '../components/ProductItem';
 
 const FFScreen = ({ route }) => {
