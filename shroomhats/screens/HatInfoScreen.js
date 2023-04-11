@@ -2,8 +2,9 @@ import React from 'react';
 import { View, FlatList, Text } from 'react-native';
 import ProductItem from '../components/ProductItem';
 
-const AHScreen = ({ route }) => {
-  const { adjustableHats } = route.params;
+const HatInfoScreen = ({ route }) => {
+  const { adjustableHats, flexFitHats } = route.params;
+  //const { flexFitHats } = route.params;
 
 const renderItem = ({ item }) => (
   <ProductItem item={item} />
@@ -12,12 +13,13 @@ const renderItem = ({ item }) => (
   return (
     <View>
         <FlatList
-          data={adjustableHats}
+          data={[...adjustableHats, ...flexFitHats]}
           renderItem={renderItem}
           keyExtractor={(item) => item.id.toString()}
+          //extraData={flexFitHats}
         /> 
     </View>
   );
 };
 
-export default AHScreen;
+export default HatInfoScreen;

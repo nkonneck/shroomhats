@@ -16,8 +16,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const Tab = createBottomTabNavigator();
 
 const screenOptions = {
-    headerTintColor: 'black',
-    headerStyle: { backgroundColor: '#fff' },
+    headerTintColor: '#fff',
+    headerStyle: { backgroundColor: 'rgba(50, 50, 20 , 0.1)',  },
 };
 
 const LogoTitle = () => {
@@ -28,7 +28,6 @@ const LogoTitle = () => {
         />
     );
 };
-
 
 const HomeNavigator = () => {
     const Stack = createStackNavigator();
@@ -100,7 +99,6 @@ const HomeNavigator = () => {
         </Stack.Navigator>
     );
 };
-
 
 const FavoritesNavigator = () => {
     const Stack = createStackNavigator();
