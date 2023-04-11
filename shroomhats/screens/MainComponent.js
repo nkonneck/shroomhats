@@ -1,5 +1,6 @@
 import DirectoryScreen from './DirectoryScreen';
 import HatInfoScreen from './HatInfoScreen';
+import FavoritesScreen from './FavoritesScreen';
 import HomeScreen from './HomeScreen';
 import AboutScreen from './AboutScreen';
 import ContactScreen from './ContactScreen';
@@ -104,28 +105,37 @@ const HomeNavigator = () => {
 };
 
 
-// const DirectoryNavigator = () => {
-//     const Stack = createStackNavigator();
-//     return (
-//         <Stack.Navigator
-//             initialRouteName='Directory'
-//             screenOptions={screenOptions}
-//         >
-//             <Stack.Screen
-//                 name='Directory'
-//                 component={DirectoryScreen}
-//                 options={{ headerTitle: (props) => <LogoTitle {...props} />, }}
-//             />
-//             <Stack.Screen
-//                 name='HatInfo'
-//                 component={HatInfoScreen}
-//                 options={({ route }) => ({
-//                     title: route.params.hat.name
-//                 })}
-//             />
-//         </Stack.Navigator>
-//     );
-// };
+const FavoritesNavigator = () => {
+    const Stack = createStackNavigator();
+    return (
+        <Stack.Navigator
+            initialRouteName='Favorites'
+            screenOptions={screenOptions}
+        >
+            <Stack.Screen
+                name='Favorites'
+                component={FavoritesScreen}
+                options={{
+                    headerTitle: (props) => <LogoTitle {...props} />, 
+                    headerLeft: () => (
+                        <Icon style={styles.searchIcon}
+                            name='search'
+                            size={20}
+                            color={'#333'}
+                        />
+                    ),
+                    headerRight: () => (
+                        <Icon style={styles.cartIcon}
+                            name="shopping-cart" 
+                            size={20} 
+                            color="#333"
+                        />
+                    )
+                }}
+            />
+         </Stack.Navigator>
+    );
+ };
 
 const AboutNavigator = () => {
     const Stack = createStackNavigator();
@@ -174,35 +184,25 @@ const Main = () => {
             }}
             >
             <Tab.Screen
-                name='Discover'
+                name='Shop'
                 component={HomeNavigator}
                 options={{ 
-                    tabBarLabel: 'Discover', 
+                    tabBarLabel: 'Shop', 
                     tabBarIcon: ({ color, size }) => (
                         <Ionicons name='ios-home-outline' size={size} color={color} />
                     )
                 }}
             />
-            {/* <Tab.Screen 
-                name='Directory'
-                component={DirectoryNavigator}
+             <Tab.Screen 
+                name='Favorites'
+                component={FavoritesNavigator}
                 options={{ 
-                    tabBarLabel: 'Directory',
+                    tabBarLabel: 'Favorites',
                     tabBarIcon: ({ color, size }) => (
-                        <Ionicons name='ios-list-outline' size={size} color={color}/>
+                        <Ionicons name='heart-outline' size={size} color={color}/>
                     )
                 }}
-            /> */}
-            <Tab.Screen 
-                name='About'
-                component={AboutNavigator}
-                options={{
-                    tabBarLabel: 'About',
-                    tabBarIcon: ({ color, size }) => (
-                        <Ionicons name='information-circle' size={size} color={color}/>
-                    )
-                }}
-            />
+            /> 
             <Tab.Screen 
                 name='Account'
                 component={ContactNavigator}
@@ -223,6 +223,16 @@ const Main = () => {
                     ),
                 }}
             /> 
+            <Tab.Screen 
+                name='About'
+                component={AboutNavigator}
+                options={{
+                    tabBarLabel: 'About',
+                    tabBarIcon: ({ color, size }) => (
+                        <Ionicons name='information-circle' size={size} color={color}/>
+                    )
+                }}
+            />
          </Tab.Navigator> 
         </View>
     );

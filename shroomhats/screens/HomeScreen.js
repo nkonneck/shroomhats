@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, FlatList } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from "react-native";
 import { HATS } from "../shared/hats";
+import beachhat from "../assets/images/beachhat.png"
+import yodahat from "../assets/images/yodahat.png"
 
 
 const HomeScreen = ({ navigation }) => {
@@ -8,22 +10,26 @@ const HomeScreen = ({ navigation }) => {
     const flexFitHats = HATS.filter(hat => hat.type === 'flexfit');
 
     return (
-      <View style={styles.container}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() =>
-            navigation.navigate('AHScreen', { adjustableHats })}
-        >
-          <Text style={styles.buttonText}>Adjustable Hats</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() =>
-            navigation.navigate('FFScreen', { flexFitHats })}
-        >
-          <Text style={styles.buttonText}>Flexfit Hats</Text>
-        </TouchableOpacity>
-      </View>
+      <ScrollView>
+        <View style={styles.container}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() =>
+              navigation.navigate('AHScreen', { adjustableHats })}
+          >
+              <Text style={styles.buttonText}>Adjustable Hats</Text>
+              <Image source={beachhat} style={styles.buttonImage} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() =>
+              navigation.navigate('FFScreen', { flexFitHats })}
+          >
+              <Text style={styles.buttonText}>Flexfit Hats</Text>
+              <Image source={yodahat} style={styles.buttonImage} />
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     );
 };
 
@@ -32,61 +38,29 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#f2f2f2",
+    backgroundColor: "transparent",
   },
   button: {
-    backgroundColor: "#2196F3",
-    padding: 16,
+    width: '90%',
+    backgroundColor: "rgba(40, 91, 2, 0.2)",
+    paddingVertical: 16,
+    paddingHorizontal: 20,
     borderRadius: 8,
-    marginBottom: 16,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 10,
   },
   buttonText: {
-    color: "#fff",
-    fontWeight: "bold",
+    color: "black",
+    //fontWeight: "bold",
     fontSize: 16,
+  },
+  buttonImage: {
+    width: 100,
+    height: 100,
+    resizeMode: 'contain',
   },
 });
 
 export default HomeScreen;
-
-
-
-
-//const [hats, setHats] = useState(HATS);
-//    const renderDirectoryItem = ({ item: hat }) => {
-//     
-//   return (
-//     <FlatList
-//       data={hats}
-//       renderItem={renderDirectoryItem}
-//       keyExtractor={(item) => item.id.toString()}
-//     />
-//   )
-// };
-
-
-  // const filterHatsByType = (type) => {
-  //   const filtered = HATS.filter((hat) => hat.type === type);
-  //   setFilteredHats(filtered);
-
-  // };
-
-//   return (
-//     <View style={styles.container}>
-//       <TouchableOpacity
-//         style={styles.button}
-//         onPress={() => 
-//           navigation.navigate('AHScreen',)
-//           }
-//       >
-//         <Text style={styles.buttonText}>Adjustable Hats</Text>
-//       </TouchableOpacity>
-//       
-//       <FlatList 
-//         data={filteredHats}
-//         renderItem={({ item }) => <ProductItem item={item} />}
-//         keyExtractor={(item) => item.id.toString()}
-//       /> */}
-//     </View>
-//   );
-// };
