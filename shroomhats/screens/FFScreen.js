@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { View, FlatList, Modal, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import ProductItem from '../components/ProductItem';
-import ItemOverlay from '../components/ItemOverlay';
 
 const FFScreen = ({ route }) => {
     const { flexFitHats } = route.params;
     
     const renderItem = ({ item }) => {
-        console.log('renderitem: ', item);
         return (
             <View>
                 <TouchableOpacity>

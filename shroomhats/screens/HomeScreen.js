@@ -23,7 +23,8 @@ const HomeScreen = ({ navigation }) => {
           <TouchableOpacity
             style={styles.button}
             onPress={() =>
-              navigation.navigate('FFScreen', { flexFitHats })}
+              navigation.navigate('FFScreen', { flexFitHats })
+            }
           >
               <Text style={styles.buttonText}>Flexfit Hats</Text>
               <Image source={yodahat} style={styles.buttonImage} />

@@ -1,43 +1,65 @@
 import React, { useState }  from "react";
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Button } from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import Modal from 'react-native-modal';
 import  { BlurView }  from 'expo-blur';
+import Icon from 'react-native-vector-icons/AntDesign';
+
 
 const ProductItem = ({ item }) => {
   const [showModal, setShowModal] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  
+  const addItem = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const removeItem = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
 
   return (
     <ScrollView>
       <View style={styles.container}>
           <TouchableOpacity style={styles.detailsContainer}
-          onPress={() => 
-            setShowModal(true)}
+            onPress={() => setShowModal(true)}
           >
             <Image source={item.image} style={styles.image} />
-              <Text style={styles.name}>{item.name}</Text>
-              {/* <Text style={styles.description}>{item.description}</Text> */}
-              <Text style={styles.price}>${item.price}</Text>
+            <Text style={styles.name}>{item.name}</Text>   
           </TouchableOpacity>
       </View>
       <Modal 
         isVisible={showModal}
-        // onBackdropPress={() => setShowModal(false)}
-        // backdropOpacity={0.7}
         style={styles.modal}
       >
         <View style={styles.modalBackground}>
-          <BlurView intensity={10} style={styles.modalBlur}>
-            <TouchableOpacity 
-              style={styles.touchable}
-              onPress={() => setShowModal(false)}
-              />
-          </BlurView>
+            <BlurView intensity={10} style={styles.modalBlur}>
+            </BlurView>
           <View style={styles.modalContainer}>
+              <TouchableOpacity
+                  style={styles.closeButton} 
+                  onPress={() => setShowModal(false)}
+              >
+                <Icon name="closecircleo" size={40} color={'black'} />
+            </TouchableOpacity>
             <Image source={item.image} style={styles.modalImage} />
                 <Text style={styles.modalName}>{item.name}</Text>
                 <Text style={styles.modalDescription}>{item.description}</Text>
                 <Text style={styles.modalPrice}>${item.price}</Text>
-                <Button title='close' onPress={() => setShowModal(false)} />
+            <View style={styles.formContainer}>
+            <TouchableOpacity 
+                  style={styles.formLabel}
+                  onPress={removeItem}>
+                    <Icon name='minuscircle' size={25} color={'black'} />
+                </TouchableOpacity>
+                <Text style={styles.formQuantityText}>{quantity}</Text>
+                <TouchableOpacity 
+                  style={styles.formLabel}
+                  onPress={addItem}>
+                    <Icon name='pluscircle' size={25} color={'black'} />
+                </TouchableOpacity> 
+              </View> 
           </View>
         </View>
       </Modal>
@@ -54,12 +76,12 @@ const styles = StyleSheet.create({
   },
   detailsContainer: {
     width: '90%',
-    backgroundColor: "rgba(40, 91, 2, 0.2)",
+    backgroundColor: "rgba(40, 91, 2, 0.1)",
     paddingVertical: 16,
     paddingHorizontal: 20,
     borderRadius: 8,
     flexDirection: 'column',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center',
     marginTop: 10,
   },
@@ -82,7 +104,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   modal: {
-    margin: 5,
+    margin: 0,
   },
   modalBackground: {
     flex: 1,
@@ -105,30 +127,78 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
-    height: 350,
-    width: '90%',
-    
+    justifyContent: 'space-evenly',
+    height: '70%',
+    width: '90%',  
   },
   modalImage: {
     height: 200,
     width: 200,
-    marginBottom: 5,
+    borderRadius: 20,
+    backgroundColor: 'rgba(220, 220, 220, 0.1)'
   },
   modalName: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 10,
+    //backgroundColor: 'rgba(50, 50, 50, 0.5)'
   },
   modalDescription: {
     fontSize: 16,
-    marginBottom: 10,
+    //backgroundColor: 'rgba(50, 50, 50, 0.5)'
   },
   modalPrice: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginTop: 10,
+    //backgroundColor: 'rgba(50, 50, 50, 0.5)'
+  },
+  formContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    width: 130,
+    height: 40,
+    borderRadius: 20,
+    borderWidth: 2,
+    borderColor: '#ccc',
+    overflow: 'hidden',
+  },
+  formLabel: {
+    fontSize: 18,
+    width: 30,
+    height: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  FormButtonText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  formQuantityText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  closeButton: {
+    position: 'absolute',
+    top: '1%',
+    left: '1%',
   },
 });
 
 export default ProductItem;
+
+
+
+
+{/* <View style={styles.container}>
+      <TouchableOpacity onPress={handleDecrement} style={styles.button}>
+        <Text style={styles.buttonText}>-</Text>
+      </TouchableOpacity>
+      <View style={styles.quantityContainer}>
+        <Text style={styles.quantityText}>{quantity}</Text>
+      </View>
+      <TouchableOpacity onPress={handleIncrement} style={styles.button}>
+        <Text style={styles.buttonText}>+</Text>
+      </TouchableOpacity>
+    </View> */}

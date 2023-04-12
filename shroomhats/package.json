@@ -20,9 +20,11 @@
     "@react-navigation/stack": "5.14.9",
     "@reduxjs/toolkit": "1.9.2",
     "expo": "~47.0.12",
+    "expo-blur": "~12.0.1",
     "expo-constants": "~14.0.2",
     "expo-image-manipulator": "~11.0.0",
     "expo-image-picker": "~14.0.2",
+    "expo-linear-gradient": "~12.0.1",
     "expo-mail-composer": "~12.0.0",
     "expo-media-library": "~15.0.0",
     "expo-notifications": "~0.17.0",
@@ -33,15 +35,19 @@
     "react-native-animatable": "^1.3.3",
     "react-native-elements": "^3.4.3",
     "react-native-gesture-handler": "~2.8.0",
+    "react-native-increment-decrement-button": "^1.0.0",
     "react-native-modal": "^13.0.1",
+    "react-native-paper": "^5.6.0",
     "react-native-reanimated": "~2.12.0",
     "react-native-safe-area-context": "^3.4.1",
     "react-native-screens": "~3.18.0",
+    "react-native-stepper-ui": "^0.0.9",
     "react-native-swipe-list-view": "^3.2.9",
+    "react-native-vector-icons": "^9.2.0",
     "react-redux": "8.0.5",
     "redux": "4.2.1",
     "redux-persist": "^6.0.0",
-    "expo-blur": "~12.0.1"
+    "save": "^2.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
