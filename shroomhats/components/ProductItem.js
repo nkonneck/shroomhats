@@ -11,14 +11,19 @@ import Icon from 'react-native-vector-icons/Feather'
 const ProductItem = ({ item }) => {
   const [showModal, setShowModal] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(item.price);
   
   const addItem = () => {
-    setQuantity(quantity + 1);
+    const newQuantity = quantity + 1;
+    setQuantity(newQuantity);
+    setTotalPrice(item.price * newQuantity);
   };
 
   const removeItem = () => {
     if (quantity > 1) {
-      setQuantity(quantity - 1);
+      const newQuantity = quantity - 1;
+      setQuantity(newQuantity);
+      setTotalPrice(item.price * newQuantity);
     }
   };
 
@@ -47,7 +52,7 @@ const ProductItem = ({ item }) => {
                 <View style={styles.divider} />
                     <Text style={styles.modalText}>{item.description}</Text>
                 <View style={styles.divider} />
-                <Text style={styles.modalText}>Price: ${item.price}</Text>
+                <Text style={styles.modalText}>Price: ${totalPrice}</Text>
                 <View style={styles.formContainer}>
                     <TouchableOpacity
                         style={styles.formLabel}
@@ -76,6 +81,7 @@ const ProductItem = ({ item }) => {
             >
               <Image source={item.image} style={styles.buttonImage} />
               <Text style={styles.buttonText}>{item.name}</Text>
+              <Text style={styles.buttonText}>${item.price}</Text>
             </TouchableOpacity>
             </View>
             
@@ -86,16 +92,12 @@ const ProductItem = ({ item }) => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    justifyContent: 'center',
   },
   button: {
     width: '90%',
     backgroundColor: "rgba(40, 91, 2, 0.2)",
-    paddingVertical: 16,
-    paddingHorizontal: 20,
     borderRadius: 8,
     flexDirection: 'column',
-    justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: 10,
   },
