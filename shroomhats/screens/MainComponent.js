@@ -5,6 +5,7 @@ import Constants from 'expo-constants';
 import AHScreen from './AHScreen';
 import FFScreen from './FFScreen';
 import SBScreen from './SBScreen';
+import LoginScreen from './LoginScreen';
 import { Platform, View, Image, StyleSheet, StatusBar, Text } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -38,20 +39,20 @@ const HomeNavigator = () => {
                 component={HomeScreen}
                 options={{ 
                     headerTitle: (props) => <LogoTitle {...props} />,
-                    headerLeft: () => (
-                        <Icon style={styles.searchIcon}
-                            name='search'
-                            size={20}
-                            color={'#333'}
-                        />
-                    ),
-                    headerRight: () => (
-                        <Icon style={styles.cartIcon}
-                            name="shopping-cart" 
-                            size={20} 
-                            color="#333"
-                        />
-                    )
+                    // headerLeft: () => (
+                    //     <Icon style={styles.searchIcon}
+                    //         name='search'
+                    //         size={20}
+                    //         color={'#333'}
+                    //     />
+                    // ),
+                    // headerRight: () => (
+                    //     <Icon style={styles.cartIcon}
+                    //         name="shopping-cart" 
+                    //         size={20} 
+                    //         color="#333"
+                    //     />
+                    // )
             }}
             />
             <Stack.Screen 
@@ -59,13 +60,13 @@ const HomeNavigator = () => {
                 component={AHScreen} 
                 options={{
                     headerTitle: () => <Text>Adjustable Hats</Text>,
-                    headerRight: () => (
-                        <Icon style={styles.cartIcon}
-                            name="shopping-cart" 
-                            size={20} 
-                            color="#333"
-                        />
-                    )
+                    // headerRight: () => (
+                    //     <Icon style={styles.cartIcon}
+                    //         name="shopping-cart" 
+                    //         size={20} 
+                    //         color="#333"
+                    //     />
+                    // )
                 }}
             />
             <Stack.Screen 
@@ -73,13 +74,13 @@ const HomeNavigator = () => {
                 component={FFScreen} 
                 options={{
                     headerTitle: () => <Text>Flexfit Hats</Text>,
-                    headerRight: () => (
-                        <Icon style={styles.cartIcon}
-                            name="shopping-cart" 
-                            size={20} 
-                            color="#333"
-                        />
-                    )
+                    // headerRight: () => (
+                    //     <Icon style={styles.cartIcon}
+                    //         name="shopping-cart" 
+                    //         size={20} 
+                    //         color="#333"
+                    //     />
+                    // )
                 }}
             />
             <Stack.Screen 
@@ -87,13 +88,13 @@ const HomeNavigator = () => {
                 component={SBScreen} 
                 options={{
                     headerTitle: () => <Text>Snapback Hats</Text>,
-                    headerRight: () => (
-                        <Icon style={styles.cartIcon}
-                            name="shopping-cart" 
-                            size={20} 
-                            color="#333"
-                        />
-                    )
+                    // headerRight: () => (
+                    //     <Icon style={styles.cartIcon}
+                    //         name="shopping-cart" 
+                    //         size={20} 
+                    //         color="#333"
+                    //     />
+                    // )
                 }}
             />
         </Stack.Navigator>
@@ -109,6 +110,19 @@ const AboutNavigator = () => {
                 component={AboutScreen}
                 options={{ headerTitle: (props) => <LogoTitle {...props} />, }}
 
+            />
+        </Stack.Navigator>
+    );
+};
+
+const LoginNavigator = () => {
+    const Stack = createStackNavigator();
+    return (
+        <Stack.Navigator screenOptions={screenOptions}>
+            <Stack.Screen
+                name='Contact'
+                component={LoginScreen}
+                options={{ headerTitle: (props) => <LogoTitle {...props} />, }}
             />
         </Stack.Navigator>
     );
@@ -138,7 +152,7 @@ const Main = () => {
             }}
          >
             <StatusBar barStyle="dark-content"/>  
-            
+
          <Tab.Navigator
             initialRouteName='Home'
             tabBarOptions={{ 
@@ -159,7 +173,7 @@ const Main = () => {
             />
             <Tab.Screen 
                 name='Account'
-                component={ContactNavigator}
+                component={LoginNavigator}
                 options={{
                     tabBarLabel: 'Account',
                     tabBarIcon: ({ color, size }) => (

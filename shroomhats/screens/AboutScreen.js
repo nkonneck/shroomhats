@@ -11,9 +11,6 @@ const CustomButton = ({ title, onPress }) => {
     );
   };
 
-//const { height } = Dimensions.get('window');
-const NAVIGATION_BAR_HEIGHT = 0;
-
 const AboutScreen = () => {
   const handleDonatePress = () => {
         Linking.openURL('https://thethirdwave.co/donate/');
@@ -69,13 +66,6 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: 'bold',
         fontSize: 16,
-      },
-      prContainer: {
-        position: 'absolute',
-        bottom: NAVIGATION_BAR_HEIGHT,
-        left: 0,
-        right: 0,
-        backgroundColor: 'white',
       },
   });
 

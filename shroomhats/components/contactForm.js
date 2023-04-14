@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { TextInput, StyleSheet, TouchableOpacity, Text } from "react-native";
+import { TextInput, StyleSheet, TouchableOpacity } from "react-native";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,7 +14,7 @@ const SubmitButton = ({ onPress }) => {
         
       </TouchableOpacity>
     );
-  }
+  };
 
 const ContactForm = () => {
     const [name, setName] = useState('');
@@ -51,6 +51,8 @@ return (
             placeholder="Phone Number"
             keyboardType="phone-pad"
             keyboardAppearance='dark'
+            selectionColor='slategrey'
+            selectTextOnFocus='true'
             maxLength= '10'
             onFocus={() => handleFocus('phoneNum')}
         />
@@ -64,6 +66,8 @@ return (
             placeholder="Email"
             keyboardType="email-address"
             keyboardAppearance='dark'
+            selectionColor='slategrey'
+            selectTextOnFocus='true'
             onFocus={() => handleFocus('email')}
         />
         <SubmitButton onPress={() => console.log({ name, phoneNum, email })} />
