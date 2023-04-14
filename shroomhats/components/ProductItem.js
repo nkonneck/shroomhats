@@ -1,7 +1,10 @@
 import React, { useState }  from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity, Modal } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity, Modal, } from "react-native";
 import { BlurView } from 'expo-blur';
-import Icon from 'react-native-vector-icons/AntDesign';
+import { Tooltip, lightColors } from "react-native-elements";
+//import Icon from 'react-native-vector-icons/AntDesign';
+
+import Icon from 'react-native-vector-icons/Feather'
 
 
 
@@ -20,42 +23,52 @@ const ProductItem = ({ item }) => {
   };
 
   return (
-      <View styles={styles.centeredView}>
+    <View styles={styles.centeredView}>
         <Modal
          visible={showModal}
          animationType='slide'
          transparent={true}
            >   
         <View style={styles.centeredView}>
-        <BlurView intensity={20} style={styles.blurModal} />
+          <BlurView intensity={20} style={styles.blurModal} />
             <View style={styles.modalView}>
-                <Image style={styles.modalImage} source={item.image}  />
-                <Text style={styles.modalText}>{item.name}</Text>
+                <Image style={styles.modalImage} source={item.image}  /> 
+                <Text style={styles.modalText}>{item.name}
+                  <Tooltip
+                  popover={<Text style={{ fontSize: 12, fontWeight: 'bold', }}>{item.details}</Text>}
+                  width={280}
+                  height={100}
+                  backgroundColor='darkseagreen'
+                  overlayColor='rgba(128, 128, 128, 0.95)'
+                  >
+                    <Icon name='info' size={25} color='black' />
+                  </Tooltip>
+                </Text>
                 <View style={styles.divider} />
-                <Text style={styles.modalText}>{item.description}</Text>
+                    <Text style={styles.modalText}>{item.description}</Text>
                 <View style={styles.divider} />
                 <Text style={styles.modalText}>Price: ${item.price}</Text>
                 <View style={styles.formContainer}>
-                  <TouchableOpacity
-                      style={styles.formLabel}
-                      onPress={removeItem}>
-                      <Icon name='minuscircle' size={25} color={'black'} />
-                  </TouchableOpacity>
-                    <Text style={styles.formLabel}>{quantity}</Text>
                     <TouchableOpacity
-                      style={styles.formLabel}
-                      onPress={addItem}>
-                      <Icon name='pluscircle' size={25} color={'black'} />
+                        style={styles.formLabel}
+                        onPress={removeItem}>
+                        <Icon name='arrow-down-circle' size={25} color={'black'} />
                     </TouchableOpacity>
-                    </View>
+                      <Text style={styles.formLabel}>{quantity}</Text>
+                      <TouchableOpacity
+                        style={styles.formLabel}
+                        onPress={addItem}>
+                        <Icon name='arrow-up-circle' size={25} color={'black'} />
+                      </TouchableOpacity>
+                  </View>
               <TouchableOpacity
-                style={styles.closeButton}
-                onPress={() => setShowModal(!showModal)}
-              >
-                <Icon name='closecircle' size={40} color='black' /> 
+                  style={styles.closeButton}
+                  onPress={() => setShowModal(!showModal)}
+                >
+                  <Icon name='x-circle' size={40} color='black' /> 
               </TouchableOpacity>
-              </View>
-            </View>
+              </View> 
+            </View>  
         </Modal>
         <View style={styles.container}>
             <TouchableOpacity style={styles.button}
@@ -65,7 +78,8 @@ const ProductItem = ({ item }) => {
               <Text style={styles.buttonText}>{item.name}</Text>
             </TouchableOpacity>
             </View>
-      </View>
+            
+    </View>
   );
 };
 
@@ -140,7 +154,7 @@ const styles = StyleSheet.create({
   },
   modalView: {
     margin: 20,
-    backgroundColor: 'rgba(255, 255, 255, 0.7)',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
     borderRadius: 20,
     padding: 35,
     alignItems: 'center',

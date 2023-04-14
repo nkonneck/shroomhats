@@ -6,7 +6,7 @@ import Constants from 'expo-constants';
 import AHScreen from './AHScreen';
 import FFScreen from './FFScreen';
 import SBScreen from './SBScreen';
-import { Platform, View, Image, StyleSheet, StatusBar } from 'react-native';
+import { Platform, View, Image, StyleSheet, StatusBar, Text } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
@@ -35,7 +35,7 @@ const HomeNavigator = () => {
     return (
         <Stack.Navigator screenOptions={screenOptions}>
             <Stack.Screen 
-                name='Discover'
+                name='Back'
                 component={HomeScreen}
                 options={{ 
                     headerTitle: (props) => <LogoTitle {...props} />,
@@ -59,7 +59,7 @@ const HomeNavigator = () => {
                 name='AHScreen'
                 component={AHScreen} 
                 options={{
-                    headerTitle: (props) => <LogoTitle {...props} />,
+                    headerTitle: () => <Text>Adjustable Hats</Text>,
                     headerRight: () => (
                         <Icon style={styles.cartIcon}
                             name="shopping-cart" 
@@ -73,7 +73,7 @@ const HomeNavigator = () => {
                 name='FFScreen'
                 component={FFScreen} 
                 options={{
-                    headerTitle: (props) => <LogoTitle {...props} />,
+                    headerTitle: () => <Text>Flexfit Hats</Text>,
                     headerRight: () => (
                         <Icon style={styles.cartIcon}
                             name="shopping-cart" 
@@ -87,7 +87,7 @@ const HomeNavigator = () => {
                 name='SBScreen'
                 component={SBScreen} 
                 options={{
-                    headerTitle: (props) => <LogoTitle {...props} />,
+                    headerTitle: () => <Text>Snapback Hats</Text>,
                     headerRight: () => (
                         <Icon style={styles.cartIcon}
                             name="shopping-cart" 

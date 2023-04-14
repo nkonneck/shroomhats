@@ -39,7 +39,7 @@ export const HATS = [
         price: "34.99",
         type: "flexfit",
         description: "It is your turn to save the galaxy...while wearing a Shroom Hat of course! An excellent choice for those who are mushroom lovers and force users alike. May the shrooms be with you!",
-        details: "Stretch band. Structured, mid-profile fit. Six panels with eyelets. Sourced from Vietnam or Bangladesh. Material: 63% polyester, 34% cotton, 3% spandex twill."
+        details: "Stretch band. Structured, mid-profile fit. Six panels with eyelets. Material: 63% polyester, 34% cotton, 3% spandex twill. Sourced from Vietnam or Bangladesh."
     }, 
     {
         id: 4,
@@ -48,7 +48,7 @@ export const HATS = [
         price: "29.99",
         type: "flexfit",
         description: "Time for a shroomcation? Pick up the Beach Shroom Flexfit Hat and hit the beach! The perfect mushroom hat for shroom lovers who also love to vacation.",
-        details: "Strech band. Structured, mid-profile fit. Six panels with eyelets. Sourced from Vietnam or Bangladesh. Material: 63% polyester, 34% cotton, 3% spandex twill."
+        details: "Strech band. Structured, mid-profile fit. Six panels with eyelets. Material: 63% polyester, 34% cotton, 3% spandex twill. Sourced from Vietnam or Bangladesh."
     },    
     {
         id: 5,
@@ -57,7 +57,7 @@ export const HATS = [
         price: "29.99",
         type: "flexfit",
         description: "If you like pizza and shrooms (but not necessarily together), this hat is the perfect match for you. Check out this pizza-themed Shroom Hat for mushroom lovers and enthusiasts!",
-        details: "Strech band. Structured, mid-profile fit. Six panels with eyelets. Sourced from Vietnam or Bangladesh. Material: 63% polyester, 34% cotton, 3% spandex twill."
+        details: "Strech band. Structured, mid-profile fit. Six panels with eyelets. Material: 63% polyester, 34% cotton, 3% spandex twill. Sourced from Vietnam or Bangladesh."
     },    
 
     //SNAPBACK HATS
