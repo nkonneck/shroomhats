@@ -34,5 +34,5 @@ export const HATS = [
         type: "adjustable",
         description: "It is your turn to save the galaxy...while wearing a Shroom Hat of course! An excellent choice for those who are mushroom lovers, and are also bounty hunters (or wish you were)",
         details: "Strech band. Structured, mid-profile fit. Six panels with eyelets. Sourced from Vietnam or Bangladesh. Material: 63% polyester, 34% cotton, 3% spandex twill."
-    },    
+    },       
 ];

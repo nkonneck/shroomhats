@@ -59,13 +59,6 @@ const HomeNavigator = () => {
                 component={AHScreen} 
                 options={{
                     headerTitle: (props) => <LogoTitle {...props} />,
-                    // headerLeft: () => (
-                    //     <Icon style={styles.searchIcon}
-                    //         name='search'
-                    //         size={20}
-                    //         color={'#333'}
-                    //     />
-                    // ),
                     headerRight: () => (
                         <Icon style={styles.cartIcon}
                             name="shopping-cart" 
@@ -80,13 +73,6 @@ const HomeNavigator = () => {
                 component={FFScreen} 
                 options={{
                     headerTitle: (props) => <LogoTitle {...props} />,
-                    // headerLeft: () => (
-                    //     <Icon style={styles.searchIcon}
-                    //         name='search'
-                    //         size={20}
-                    //         color={'#333'}
-                    //     />
-                    // ),
                     headerRight: () => (
                         <Icon style={styles.cartIcon}
                             name="shopping-cart" 

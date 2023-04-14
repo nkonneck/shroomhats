@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "transparent",
   },
   button: {
     width: '90%',
@@ -54,7 +53,6 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "black",
-    //fontWeight: "bold",
     fontSize: 16,
   },
   buttonImage: {
