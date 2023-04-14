@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList, TouchableOpacity, ScrollView } from 'react-native';
+import { FlatList, TouchableOpacity, } from 'react-native';
 import ProductItem from '../components/ProductItem';
 
 const FFScreen = ({ route }) => {

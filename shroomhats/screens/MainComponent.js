@@ -5,7 +5,8 @@ import ContactScreen from './ContactScreen';
 import Constants from 'expo-constants';
 import AHScreen from './AHScreen';
 import FFScreen from './FFScreen';
-import { Platform, View, Image, StyleSheet } from 'react-native';
+import SBScreen from './SBScreen';
+import { Platform, View, Image, StyleSheet, StatusBar } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
@@ -16,7 +17,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const Tab = createBottomTabNavigator();
 
 const screenOptions = {
-    headerTintColor: '#fff',
+    headerTintColor: 'black',
     headerStyle: { backgroundColor: 'rgba(50, 50, 20 , 0.1)',  },
 };
 
@@ -71,6 +72,20 @@ const HomeNavigator = () => {
             <Stack.Screen 
                 name='FFScreen'
                 component={FFScreen} 
+                options={{
+                    headerTitle: (props) => <LogoTitle {...props} />,
+                    headerRight: () => (
+                        <Icon style={styles.cartIcon}
+                            name="shopping-cart" 
+                            size={20} 
+                            color="#333"
+                        />
+                    )
+                }}
+            />
+            <Stack.Screen 
+                name='SBScreen'
+                component={SBScreen} 
                 options={{
                     headerTitle: (props) => <LogoTitle {...props} />,
                     headerRight: () => (
@@ -155,6 +170,7 @@ const Main = () => {
                     Platform.OS === 'ios' ? 0 : Constants.statusBarHeight
             }}
          >
+            <StatusBar barStyle="dark-content"/>
            
          <Tab.Navigator
             initialRouteName='Home'

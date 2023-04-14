@@ -25,8 +25,7 @@ const ProductItem = ({ item }) => {
          visible={showModal}
          animationType='slide'
          transparent={true}
-           >
-            
+           >   
         <View style={styles.centeredView}>
         <BlurView intensity={20} style={styles.blurModal} />
             <View style={styles.modalView}>
@@ -53,8 +52,7 @@ const ProductItem = ({ item }) => {
                 style={styles.closeButton}
                 onPress={() => setShowModal(!showModal)}
               >
-                <Icon name='closecircle' size={40} color='black' />
-                
+                <Icon name='closecircle' size={40} color='black' /> 
               </TouchableOpacity>
               </View>
             </View>
@@ -75,7 +73,6 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    //backgroundColor: 'rgba(0, 0, 0, 0.2)',
   },
   button: {
     width: '90%',
@@ -94,16 +91,14 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 18,
-    //fontWeight: 'bold',
     margin: 10,
   },
   modalImage: {
-    height: 150,
-    width: 150,
+    height: 250,
+    width: 250,
   },
   modalText: {
     fontSize: 18,
-    
     margin: 10,
   },
   divider: {

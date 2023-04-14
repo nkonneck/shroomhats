@@ -3,8 +3,8 @@ import { TouchableOpacity, FlatList } from 'react-native';
 import ProductItem from '../components/ProductItem';
 
 
-const AHScreen = ({ route }) => {
-  const { adjustableHats } = route.params;
+const SBScreen = ({ route }) => {
+  const { snapBackHats } = route.params;
 
   const renderItem = ({ item }) => {
     return(
@@ -16,11 +16,11 @@ const AHScreen = ({ route }) => {
 
   return (    
       <FlatList
-          data={adjustableHats}
+          data={snapBackHats}
           renderItem={renderItem}
           keyExtractor={(item) => item.id.toString()}
         /> 
   );
 };
 
-export default AHScreen;
+export default SBScreen;

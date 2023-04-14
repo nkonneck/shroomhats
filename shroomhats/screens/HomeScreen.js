@@ -1,13 +1,16 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from "react-native";
 import { HATS } from "../shared/hats";
-import beachhat from "../assets/images/beachhat.png"
-import yodahat from "../assets/images/yodahat.png"
+import beachhat from "../assets/images/beachhat.png";
+import yodahat from "../assets/images/yodahat.png";
+import pizzahat from "../assets/images/pizzahat.png";
+import blueshroom from "../assets/images/blueshroom-blackteal.png";
 
 
 const HomeScreen = ({ navigation }) => {
     const adjustableHats = HATS.filter(hat => hat.type === 'adjustable');
     const flexFitHats = HATS.filter(hat => hat.type === 'flexfit');
+    const snapBackHats = HATS.filter(hat => hat.type === 'snapback');
 
     return (
       <ScrollView>
@@ -20,6 +23,7 @@ const HomeScreen = ({ navigation }) => {
               <Text style={styles.buttonText}>Adjustable Hats</Text>
               <Image source={beachhat} style={styles.buttonImage} />
           </TouchableOpacity>
+
           <TouchableOpacity
             style={styles.button}
             onPress={() =>
@@ -27,7 +31,17 @@ const HomeScreen = ({ navigation }) => {
             }
           >
               <Text style={styles.buttonText}>Flexfit Hats</Text>
-              <Image source={yodahat} style={styles.buttonImage} />
+              <Image source={pizzahat} style={styles.buttonImage} />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() =>
+              navigation.navigate('SBScreen', { snapBackHats })
+            }
+          >
+              <Text style={styles.buttonText}>Snapback Hats</Text>
+              <Image source={blueshroom} style={styles.buttonImage} />
           </TouchableOpacity>
         </View>
       </ScrollView>
