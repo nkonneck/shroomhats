@@ -1,4 +1,3 @@
-import FavoritesScreen from './FavoritesScreen';
 import HomeScreen from './HomeScreen';
 import AboutScreen from './AboutScreen';
 import ContactScreen from './ContactScreen';
@@ -101,38 +100,6 @@ const HomeNavigator = () => {
     );
 };
 
-const FavoritesNavigator = () => {
-    const Stack = createStackNavigator();
-    return (
-        <Stack.Navigator
-            initialRouteName='Favorites'
-            screenOptions={screenOptions}
-        >
-            <Stack.Screen
-                name='Favorites'
-                component={FavoritesScreen}
-                options={{
-                    headerTitle: (props) => <LogoTitle {...props} />, 
-                    headerLeft: () => (
-                        <Icon style={styles.searchIcon}
-                            name='search'
-                            size={20}
-                            color={'#333'}
-                        />
-                    ),
-                    headerRight: () => (
-                        <Icon style={styles.cartIcon}
-                            name="shopping-cart" 
-                            size={20} 
-                            color="#333"
-                        />
-                    )
-                }}
-            />
-         </Stack.Navigator>
-    );
- };
-
 const AboutNavigator = () => {
     const Stack = createStackNavigator();
     return (
@@ -170,8 +137,8 @@ const Main = () => {
                     Platform.OS === 'ios' ? 0 : Constants.statusBarHeight
             }}
          >
-            <StatusBar barStyle="dark-content"/>
-           
+            <StatusBar barStyle="dark-content"/>  
+            
          <Tab.Navigator
             initialRouteName='Home'
             tabBarOptions={{ 
@@ -190,16 +157,6 @@ const Main = () => {
                     )
                 }}
             />
-             <Tab.Screen 
-                name='Favorites'
-                component={FavoritesNavigator}
-                options={{ 
-                    tabBarLabel: 'Favorites',
-                    tabBarIcon: ({ color, size }) => (
-                        <Ionicons name='heart-outline' size={size} color={color}/>
-                    )
-                }}
-            /> 
             <Tab.Screen 
                 name='Account'
                 component={ContactNavigator}

@@ -1,18 +1,7 @@
 import { Card } from "react-native-elements";
-import { Text, ScrollView, View, Linking, StyleSheet, TouchableOpacity } from "react-native";
-import SocialMedia from "../components/socialMedia";
+import { Text, ScrollView, View, Linking, StyleSheet, TouchableOpacity, Dimensions } from "react-native";
 import PRScreen from '../components/PrivacyandRefundsComponent'
 
-const AboutScreen = () => {
-    return( 
-      <View>
-        <ScrollView>
-            <AboutUs />
-        </ScrollView>
-        <PRScreen />
-        </View>
-    );
-};
 
 const CustomButton = ({ title, onPress }) => {
     return (
@@ -22,38 +11,39 @@ const CustomButton = ({ title, onPress }) => {
     );
   };
 
-const AboutUs = () => {
-    const handeDonatePress = () => {
+//const { height } = Dimensions.get('window');
+const NAVIGATION_BAR_HEIGHT = 0;
+
+const AboutScreen = () => {
+  const handleDonatePress = () => {
         Linking.openURL('https://thethirdwave.co/donate/');
     };
 
     return (
-        <Card>
-            <Card.Title h2>About Us</Card.Title>
-            <Card.Divider style={styles.card}/>
-            <Text
-                style={{ margin: 10 }}
-            >
-            Shroom Hats, LLC sells hats with custom mushroom-themed designs embroidered on them. Our designs are created in-house. 
-            We strongly support the legalization and decriminalization of psychedelics. 
-            </Text>
-            <Text style={{ margin: 10, fontWeight: 'bold' }}>Starting at the end of 2023, Shroom Hats, LLC will begin making lump-sum donations of 10% of our annual profits to psychedelic and psilocybin research. You can donate too!
-            </Text>
-            <View style={styles.buttonContainer}>
-                <CustomButton title='DONATE' onPress={handeDonatePress} />
-            </View>
-            <Card.Divider style={styles.card} />
-            <View>
-                <Text>
-                Connect with us on social media!
-                </Text>
-                <SocialMedia />
-            </View>
-        </Card>
+      <ScrollView>
+          <Card>
+              <Card.Title h2>About Us</Card.Title>
+              <Card.Divider style={styles.card}/>
+              <Text
+                  style={{ margin: 10 }}
+              >
+              Shroom Hats, LLC sells hats with custom mushroom-themed designs embroidered on them. Our designs are created in-house. 
+              We strongly support the legalization and decriminalization of psychedelics. 
+              </Text>
+              <Text style={{ margin: 10, fontWeight: 'bold' }}>Starting at the end of 2023, Shroom Hats, LLC will begin making lump-sum donations of 10% of our annual profits to psychedelic and psilocybin research. You can donate too!
+              </Text>
+              <View style={styles.buttonContainer}>
+                  <CustomButton title='DONATE' onPress={handleDonatePress} />
+              </View>
+              
+          </Card>
+          <PRScreen />
+        </ScrollView>  
+        
     );
 };
 
- 
+
 
 const styles = StyleSheet.create({
     card:{
@@ -79,6 +69,13 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: 'bold',
         fontSize: 16,
+      },
+      prContainer: {
+        position: 'absolute',
+        bottom: NAVIGATION_BAR_HEIGHT,
+        left: 0,
+        right: 0,
+        backgroundColor: 'white',
       },
   });
 

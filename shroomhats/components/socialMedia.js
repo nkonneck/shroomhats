@@ -36,11 +36,10 @@ const SocialMedia = () => {
 const styles = StyleSheet.create({
     footer: {
         height: 80,
-        backgroundColor: 'rgba(231, 244, 228, 0.35)',
+        //backgroundColor: 'rgba(231, 244, 228, 0.35)',
         justifyContent: 'center',
         alignItems: 'center',
         borderBottomColor: '#ccc',
-       // marginTop: 5,
         position: 'relative',
     },
     text: {
