@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import { TextInput, StyleSheet, TouchableOpacity } from "react-native";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
@@ -26,6 +26,9 @@ const ContactForm = () => {
         setFocused(field);
     };
 
+    const refPhone = useRef();
+    const refEmail = useRef();
+
 return (
     <>
         <TextInput 
@@ -34,11 +37,15 @@ return (
                 focused === 'name' && styles.focusedInput, 
             ]}
             value={name}
+            autoFocus={true}
             onChangeText={setName}
             placeholder="Name"
             keyboardAppearance='dark'
             selectionColor='slategrey'
             selectTextOnFocus='true'
+            autoCapitalize='words'
+            returnKeyType='next'
+            onSubmitEditing={() => refPhone.current.focus()}
             onFocus={() => handleFocus('name')}
         />
         <TextInput 
@@ -47,13 +54,19 @@ return (
                 focused === 'phoneNum' && styles.focusedInput, 
             ]}
             value={phoneNum}
-            onChangeText={setPhoneNum}
+            onChangeText={(text) => {
+                setPhoneNum(text);
+                if (text.length === 10) {
+                    refEmail.current.focus()
+                }
+            }}
             placeholder="Phone Number"
-            keyboardType="phone-pad"
+            keyboardType="numeric"
             keyboardAppearance='dark'
             selectionColor='slategrey'
             selectTextOnFocus='true'
             maxLength= '10'
+            ref={refPhone}
             onFocus={() => handleFocus('phoneNum')}
         />
         <TextInput 
@@ -68,7 +81,10 @@ return (
             keyboardAppearance='dark'
             selectionColor='slategrey'
             selectTextOnFocus='true'
+            returnKeyType='done'
+            ref={refEmail}
             onFocus={() => handleFocus('email')}
+            onSubmitEditing={() => setFocused(' ')} 
         />
         <SubmitButton onPress={() => console.log({ name, phoneNum, email })} />
     </>

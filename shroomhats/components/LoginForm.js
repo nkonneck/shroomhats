@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import { TextInput, StyleSheet, View } from "react-native";
 import {  Button} from 'react-native-elements';
 import * as SecureStore from 'expo-secure-store';
@@ -15,6 +15,8 @@ const LoginForm = () => {
         setFocused(field);
     };
 
+    const refPassword = useRef();
+
     return (
         <>
             <TextInput
@@ -23,11 +25,15 @@ const LoginForm = () => {
                     focused === 'userName' && styles.focusedInput, 
                 ]}
                 value={username}
+                autoFocus={true}
                 onChangeText={setUsername}
                 placeholder="Username"
                 keyboardAppearance='dark'
                 selectionColor='slategrey'
                 selectTextOnFocus='true'
+                autoCapitalize='words'
+                returnKeyType='next'
+                onSubmitEditing={() => refPassword.current.focus()}
                 onFocus={() => handleFocus('userName')}   
             />
             <TextInput
@@ -42,7 +48,10 @@ const LoginForm = () => {
                 selectionColor='slategrey'
                 selectTextOnFocus='true'
                 secureTextEntry='true'
+                returnKeyType='done'
                 onFocus={() => handleFocus('password')}
+                ref={refPassword}
+                onSubmitEditing={() => setFocused(' ')}
             />
             <BouncyCheckbox
                 size={20}
