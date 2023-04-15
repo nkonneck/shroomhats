@@ -4,15 +4,64 @@ import {  Button} from 'react-native-elements';
 import * as SecureStore from 'expo-secure-store';
 import Icon from 'react-native-vector-icons/Ionicons';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import { Text } from "react-native-elements";
 
 const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [remember, setRemember] = useState(false);
     const [focused, setFocused] = useState('');
-
+    const [usernameError, setUsernameError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+    const [usernameValid, setUsernameValid] = useState(false);
+    const [passwordValid, setPasswordValid] = useState(false);
+    
     const handleFocus = (field) => {
         setFocused(field);
+    };
+
+    const validateUsername = () => {
+        if (!username) {
+            setUsernameError('Username is required.');
+            setUsernameValid(false);
+        } else {
+            setUsernameError('');
+            setUsernameValid(true);
+        }
+    };
+
+    const validatePassword = () => {
+        if (!password) {
+            setPasswordError('Password is required.');
+            setPasswordValid(false);
+        } else {
+            setPasswordError('');
+            setPasswordValid(true);
+        }
+    };
+
+    const validateForm = () => {
+        validateUsername();
+        validatePassword();
+            if (!usernameValid) {
+                setUsernameError('Username is required.');
+                return false;
+            } 
+            if (!passwordValid) {
+                setPasswordError('Password is required.')
+                return false;
+            }
+        return true;
+    };   
+    
+
+    const resetForm = () => {
+        setUsername('');
+        setPassword('');
+        setUsernameError('');
+        setPasswordError('');
+        setUsernameValid(false);
+        setPasswordValid(false);
     };
 
     const refPassword = useRef();
@@ -23,10 +72,13 @@ const LoginForm = () => {
                 style={[
                     styles.input,
                     focused === 'userName' && styles.focusedInput, 
+                    !usernameValid && { borderColor: 'red', borderWidth: 1}
                 ]}
                 value={username}
-                autoFocus={true}
-                onChangeText={setUsername}
+                onChangeText={(text) => {
+                    setUsername(text);
+                    validateUsername(text);
+                }}
                 placeholder="Username"
                 keyboardAppearance='dark'
                 selectionColor='slategrey'
@@ -34,39 +86,62 @@ const LoginForm = () => {
                 autoCapitalize='words'
                 returnKeyType='next'
                 onSubmitEditing={() => refPassword.current.focus()}
-                onFocus={() => handleFocus('userName')}   
+                onFocus={() => setFocused('userName')}   
+                onBlur={() => {
+                    validateUsername();
+                    setFocused('');
+                }}
             />
+            {usernameError ? <Text style={[styles.error, { marginTop: -20, marginBottom: 10, alignSelf: 'center' }]}>{usernameError}</Text> : null}
+            
             <TextInput
                 style={[
                     styles.input,
-                    focused === 'password' && styles.focusedInput, 
+                    focused === 'password' && styles.focusedInput,
+                    !passwordValid && { borderColor: 'red', borderWidth: 1} 
                 ]}
                 value={password}
-                onChangeText={setPassword}
+                onChangeText={(text) => {
+                    setPassword(text);
+                    validatePassword(text);
+                }}
                 placeholder="Password"
                 keyboardAppearance='dark'
                 selectionColor='slategrey'
                 selectTextOnFocus='true'
                 secureTextEntry='true'
                 returnKeyType='done'
-                onFocus={() => handleFocus('password')}
+                onFocus={() => setFocused('password')}
                 ref={refPassword}
                 onSubmitEditing={() => setFocused(' ')}
+                onBlur={() => {
+                    validatePassword();
+                    setFocused('');
+                }}
             />
+            {passwordError ? <Text style={[styles.error, { marginTop: -20, marginBottom: 10, alignSelf: 'center' }]}>{passwordError}</Text> : null}
+            
             <BouncyCheckbox
                 size={20}
-                //fillColor='rgba(0, 128, 0, 0.5)'
                 fillColor='rgba(0, 0, 0, 1)'
                 text="Remember Me?"
+                isChecked={remember}
                 onPress={() => setRemember(!remember)}
                 textStyle={{
                     textDecorationLine: 'none',
                 }}
                 style={styles.formCheckbox}
             />
+            
             <View style={styles.formButton}>
                 <Button
-                    //onPress={() => handleLogin()} will be added later
+                    onPress={() => {
+                        console.log({ username, password });
+                        const formValid = validateForm();
+                            if (formValid) {
+                                resetForm();
+                            }
+                    }}
                     title='Login'
                     icon={
                         <Icon
@@ -117,6 +192,10 @@ const styles = StyleSheet.create({
         marginRight: 40,
         marginLeft: 40,
         alignContent: 'space-evenly'
+    },
+    error: {
+        color: 'red',
+        fontSize: 10,
     },
 });
 
