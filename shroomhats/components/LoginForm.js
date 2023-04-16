@@ -15,6 +15,7 @@ const LoginForm = () => {
     const [passwordError, setPasswordError] = useState('');
     const [usernameValid, setUsernameValid] = useState(false);
     const [passwordValid, setPasswordValid] = useState(false);
+    const [attemptedSubmit, setAttemptedSubmit] = useState(false);
     
     const handleFocus = (field) => {
         setFocused(field);
@@ -45,15 +46,18 @@ const LoginForm = () => {
         validatePassword();
             if (!usernameValid) {
                 setUsernameError('Username is required.');
+                setAttemptedSubmit(true);
                 return false;
             } 
             if (!passwordValid) {
                 setPasswordError('Password is required.')
+                setAttemptedSubmit(true);
                 return false;
             }
         return true;
     };   
     
+
 
     const resetForm = () => {
         setUsername('');
@@ -62,6 +66,7 @@ const LoginForm = () => {
         setPasswordError('');
         setUsernameValid(false);
         setPasswordValid(false);
+        setAttemptedSubmit(false);
     };
 
     const refPassword = useRef();
@@ -72,7 +77,7 @@ const LoginForm = () => {
                 style={[
                     styles.input,
                     focused === 'userName' && styles.focusedInput, 
-                    !usernameValid && { borderColor: 'red', borderWidth: 1}
+                    (attemptedSubmit && !usernameValid) && { borderColor: 'red', borderWidth: 1 }
                 ]}
                 value={username}
                 onChangeText={(text) => {
@@ -80,16 +85,18 @@ const LoginForm = () => {
                     validateUsername(text);
                 }}
                 placeholder="Username"
+                autoFocus={true}
                 keyboardAppearance='dark'
                 selectionColor='slategrey'
                 selectTextOnFocus='true'
                 autoCapitalize='words'
                 returnKeyType='next'
                 onSubmitEditing={() => refPassword.current.focus()}
-                onFocus={() => setFocused('userName')}   
+                onFocus={() => handleFocus('userName')}   
                 onBlur={() => {
                     validateUsername();
                     setFocused('');
+                    setAttemptedSubmit(true);
                 }}
             />
             {usernameError ? <Text style={[styles.error, { marginTop: -20, marginBottom: 10, alignSelf: 'center' }]}>{usernameError}</Text> : null}
@@ -98,7 +105,7 @@ const LoginForm = () => {
                 style={[
                     styles.input,
                     focused === 'password' && styles.focusedInput,
-                    !passwordValid && { borderColor: 'red', borderWidth: 1} 
+                    (attemptedSubmit && !passwordValid) && { borderColor: 'red', borderWidth: 1} 
                 ]}
                 value={password}
                 onChangeText={(text) => {
@@ -111,12 +118,13 @@ const LoginForm = () => {
                 selectTextOnFocus='true'
                 secureTextEntry='true'
                 returnKeyType='done'
-                onFocus={() => setFocused('password')}
+                onFocus={() => handleFocus('password')}
                 ref={refPassword}
                 onSubmitEditing={() => setFocused(' ')}
                 onBlur={() => {
                     validatePassword();
                     setFocused('');
+                    setAttemptedSubmit(true);
                 }}
             />
             {passwordError ? <Text style={[styles.error, { marginTop: -20, marginBottom: 10, alignSelf: 'center' }]}>{passwordError}</Text> : null}

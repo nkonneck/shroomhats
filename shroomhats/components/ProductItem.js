@@ -1,10 +1,10 @@
 import React, { useState }  from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity, Modal, } from "react-native";
 import { BlurView } from 'expo-blur';
-import { Tooltip, lightColors } from "react-native-elements";
+import { Tooltip } from "react-native-elements";
 //import Icon from 'react-native-vector-icons/AntDesign';
-
-import Icon from 'react-native-vector-icons/Feather'
+//import Loading from '../components/LoadingComponent';
+import Icon from 'react-native-vector-icons/Feather';
 
 
 
@@ -12,6 +12,14 @@ const ProductItem = ({ item }) => {
   const [showModal, setShowModal] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(item.price);
+  //const [isLoading, setIsLoading] = useState(true);
+
+  // const handleLoading = () => {
+  //   setTimeout(() => { 
+  //     setIsLoading(false);
+  //   }, 2000);
+    
+  // };
   
   const addItem = () => {
     const newQuantity = quantity + 1;
@@ -43,7 +51,7 @@ const ProductItem = ({ item }) => {
                   popover={<Text style={{ fontSize: 12, fontWeight: 'bold', }}>{item.details}</Text>}
                   width={280}
                   height={100}
-                  backgroundColor='darkseagreen'
+                  backgroundColor='#84fa84'
                   overlayColor='rgba(128, 128, 128, 0.95)'
                   >
                     <Icon name='info' size={25} color='black' />
@@ -76,15 +84,16 @@ const ProductItem = ({ item }) => {
             </View>  
         </Modal>
         <View style={styles.container}>
-            <TouchableOpacity style={styles.button}
-              onPress={() => setShowModal(true)}
-            >
-              <Image source={item.image} style={styles.buttonImage} />
-              <Text style={styles.buttonText}>{item.name}</Text>
-              <Text style={styles.buttonText}>${item.price}</Text>
-            </TouchableOpacity>
-            </View>
             
+              <TouchableOpacity style={styles.button}
+                onPress={() => setShowModal(true)}
+              >
+                {/* {isLoading && <Loading />} */}
+                <Image source={item.image} style={styles.buttonImage} />
+                <Text style={styles.buttonText}>{item.name}</Text>
+                <Text style={styles.buttonText}>${item.price}</Text>
+              </TouchableOpacity>
+          </View>  
     </View>
   );
 };

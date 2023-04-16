@@ -130,7 +130,7 @@ return (
             style={[
                 styles.input,
                 focused === 'email' && styles.focusedInput,
-                !emailValid && attemptedSubmit && { borderColor: 'red', borderWidth: 1 } 
+                (attemptedSubmit && !emailValid ) && { borderColor: 'red', borderWidth: 1 } 
             ]}
             value={email}
             onChangeText={setEmail}

@@ -25,24 +25,3 @@ const styles = StyleSheet.create({
 });
 
 export default LoginScreen;
-
-
-
-// const handleLogin = () => {
-    //     console.log('username:', username);
-    //     console.log('password:', password);
-    //     console.log('remember:', remember);
-    //     if (remember) {
-    //         SecureStore.setItemAsync(
-    //             'userinfo',
-    //             JSON.stringify({
-    //                 username,
-    //                 password
-    //             })
-    //         ).catch((error) => console.log('Could not save user info', error));
-    //     } else {
-    //         SecureStore.deleteItemAsync('userinfo').catch((error) =>
-    //             console.log('Could not delete user info', error)
-    //         );
-    //     }
-    // };

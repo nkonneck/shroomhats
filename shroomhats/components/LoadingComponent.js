@@ -1,10 +1,14 @@
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 
 function Loading() {
     return (
         <View style={styles.loadingView}>
-            <ActivityIndicator size='large' color='#5637DD' />
-            <Text style={styles.loadingText}>Loading . . .</Text>
+            <ActivityIndicator 
+                animating={true} 
+                color={MD2Colors.deepPurple300} 
+                size="large"
+                />  
         </View>
     )
 
